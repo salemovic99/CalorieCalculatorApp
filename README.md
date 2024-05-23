@@ -28,9 +28,9 @@ A simple ASP.NET Core MVC web application to calculate daily calorie requirement
 ## Project Structure
 
     Controllers
-        CalorieCalculatorController.cs: Handles the logic for displaying the form and calculating the calories.
+        HomeController.cs: Handles the logic for displaying the form and calculating the calories.
     Models
-        CalorieCalculatorModel.cs: Represents the form data and calculation logic.
+        CalorieCalculator.cs: Represents the form data and calculation logic.
     Views
         Index.cshtml: The main view containing the form and result display.
 
