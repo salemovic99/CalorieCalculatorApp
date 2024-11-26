@@ -5,55 +5,71 @@
     ViewData["Title"] = "Home";
 }
 
-<h1 class="text-center">Daily Calorie Requirement Calculator</h1>
+<div class="pt-5 p-sm-5">
 
-<div class="row d-flex justify-content-center align-content-center">
-    <form asp-action="Index" method="post" class="col-xl-6">
-        <div class="form-group">
-            <label for="age">Age</label>
-            <input type="number" class="form-control" id="age" name="Age" asp-for="Age"  />
-            <span asp-validation-for="Age" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label for="gender">Gender</label>
-            <select class="form-control" id="gender" name="Gender" asp-for="Gender" >
-                <option></option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
-        <div class="row">
-            <div class="form-group col-xl-6">
-                <label for="weight">Weight (kg)</label>
-                <input type="number" class="form-control" id="weight" name="Weight"  asp-for="Weight"  />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group col-xl-6">
-                <label for="height">Height (cm)</label>
-                <input type="number" class="form-control" id="height" name="Height"  asp-for="Height"  />
-                <span asp-validation-for="Height" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ActivityLevel"></label>
-            <select asp-for="ActivityLevel" class="form-control" required>
-                <option value="1.2">Sedentary</option>
-                <option value="1.375">Lightly active</option>
-                <option value="1.55">Moderately active</option>
-                <option value="1.725">Very active</option>
-                <option value="1.9">Super active</option>
-            </select>
-            <span asp-validation-for="ActivityLevel" class="text-danger"></span>
-        </div>
 
-        <button type="submit" class="btn btn-primary w-100 mt-5">Calculate</button>
-    </form>
+
+    <h1 class="text-center pb-5">Daily <span class="" style="color:blue">Calorie</span> Requirement Calculator</h1>
+
+    <p class="text-center" >@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</p>
+
+    <div class="row d-flex justify-content-center align-content-center">
+        <form asp-action="Index" method="post" class="col-xl-6">
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" name="Age" asp-for="Age" value="" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender" name="Gender" asp-for="Gender">
+                    <option></option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="form-group col-xl-6">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" class="form-control" id="weight" name="Weight" asp-for="Weight" value=""/>
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group col-xl-6">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" class="form-control" id="height" name="Height" asp-for="Height" value=""/>
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActivityLevel"></label>
+                <select asp-for="ActivityLevel" class="form-control" required>
+                    <option value="1.2">Sedentary</option>
+                    <option value="1.375">Lightly active</option>
+                    <option value="1.55">Moderately active</option>
+                    <option value="1.725">Very active</option>
+                    <option value="1.9">Super active</option>
+                </select>
+                <span asp-validation-for="ActivityLevel" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-5">Calculate</button>
+        </form>
+
+    </div>
+    @if (Model.Calories > 0)
+    {
+       <div class="d-flex align-items-center justify-content-center">
+
+            <div class="alert alert-info mt-4 w-50">
+            Your daily calorie requirement is: <strong>@Model.Calories.ToString("N")</strong> calories.
+        </div>
+       </div>
+    }
 
 </div>
-@if (Model.Calories > 0)
-{
-    <div class="alert alert-info mt-4">
-        Your daily calorie requirement is: <strong>@Model.Calories.ToString("N")</strong> calories.
-    </div>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }

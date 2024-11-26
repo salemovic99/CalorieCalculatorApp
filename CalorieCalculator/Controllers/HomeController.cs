@@ -28,10 +28,7 @@ namespace CalorieCalculator.Controllers
             }
             return View(model);
         }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
 
         private double CalculateDailyCalorieRequirement(int age, string gender, double weight, double height, double activityLevel)
         {
